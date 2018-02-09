@@ -23,10 +23,10 @@
 
 \section{Introduction}
 
-Text-to-Image synthesis is a challenging problem that has a lot of room for improvement considering the current state-of-the-art results. Synthesized images from existing methods give a rough sketch of the described image but fail to capture the true essence of what the text describes. The recent success of Generative Adversarial Networks [cite goodfellow] indicate that they are a good candidate for the choice of architecture to approach this problem.
+Text-to-Image synthesis is a challenging problem that has a lot of room for improvement considering the current state-of-the-art results. Synthesized images from existing methods give a rough sketch of the described image but fail to capture the true essence of what the text describes. The recent success of Generative Adversarial Networks \cite{goodfellow2014generative} indicate that they are a good candidate for the choice of architecture to approach this problem.
 \\
 
-However the very nature of this problem is such that a piece of text can map to multiple valid images. The lack of such a direct one-to-one mapping means that traditional conditional GANs [cite] cannot be used directly. We draw our inspiration from the recent works of image-to-image translation [cite multiple] where a cycle consistent GANs have been trained and achieved very impressive results.
+However the very nature of this problem is such that a piece of text can map to multiple valid images. The lack of such a direct one-to-one mapping means that traditional conditional GANs \cite{mirza2014conditional} cannot be used directly. We draw our inspiration from the recent works of image-to-image translation \cite{liu2017unsupervised}\cite{zhu2017unpaired} where a cycle consistent GANs have been trained and achieved very impressive results.
 \\
 
 We believe that using a cycle GAN for text-to-image-to-text translation will generate better results than existing approaches and give more photo-realistic images. The added advantage of framing the problem in a cycle consistent manner would also mean that the architecture can not only be a text-to-image synthesizing network but also an image captioning network.
@@ -36,8 +36,12 @@ Therefore we have two generators $G$ and $F$. We train a a mapping $G: T_{emb} \
 
 \section{Related work}
 
+
 \section{Project plan}
 
 \section{Nice-to-halves}
+
+\bibliographystyle{plain}
+\bibliography{ref}
 
 \end{document}
