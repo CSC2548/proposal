@@ -17,9 +17,6 @@
 
 \maketitle
 
-\begin{abstract}
-Jeremy: I don't tink we need abstract for a proposal.
-\end{abstract}
 
 \section{Introduction}
 
@@ -36,11 +33,17 @@ Therefore, we have two generators $G$ and $F$. We train a mapping $G: T_{emb} \m
 
 \section{Related work}
 
-The 
+Generative Adversarial Networks (GANs) have achieved impressive results in problems such as image generation [site chintala]. Conditional GANs introduced in \cite{mirza2014conditional} build on top of GANs by learning to approximate the distribution of data by conditioning on an input.
+\\
 
+In the recent past there have been attempts on text to image synthesis using conditional GANs such as \cite{reed2016generative}\cite{dash2017tac}\cite{zhang2017stackgan}\cite{DBLP:journals/corr/abs-1710-10916}. We can see promising results in \cite{reed2016generative} by conditioning the GAN on text descriptions instead of class labels. \cite{zhang2017stackgan} uses a similar approach but breaks the process of generation down into two stage process. Stage-1 produces a low-resolution image based on text description. Stage-2 takes Stage-1 result as input and generates high resolution photo-realistic images. \cite{dash2017tac} additionally conditions its generative process with both text and class information and has produces superior results compared to [scott]. The embeddings to represent text used in the aforementioned papers is Skip-Thought vectors \cite{kiros2015skip}.
+\\
+
+Cycle consistent GANs have showed excellent results for multimodal learning problems, which lack a direct one-to-one correspondence with input and output and allows the network to learn many mappings at the same time as shown in \cite{zhu2017unpaired}\cite{liu2017unsupervised}\cite{zhou2016learning}. But to the best of our knowledge, it still hasn't been used for text-to-image generation, which is a similar multimodal learning problem.
+\\
 \section{Project plan}
 
-\section{Nice-to-halves}
+\section{Nice-to-haves}
 
 \bibliographystyle{plain}
 \bibliography{ref}
