@@ -33,18 +33,39 @@ Therefore, we have two generators $G$ and $F$. We train a mapping $G: T_{emb} \m
 
 \section{Related work}
 
-Generative Adversarial Networks (GANs) have achieved impressive results in problems such as image generation [site chintala]. Conditional GANs introduced in \cite{mirza2014conditional} build on top of GANs by learning to approximate the distribution of data by conditioning on an input.
+Generative Adversarial Networks (GANs) have achieved impressive results in problems such as image generation \cite{DBLP:journals/corr/RadfordMC15}. Conditional GANs introduced in \cite{mirza2014conditional} build on top of GANs by learning to approximate the distribution of data by conditioning on an input.
 \\
 
-In the recent past there have been attempts on text to image synthesis using conditional GANs such as \cite{reed2016generative}\cite{dash2017tac}\cite{zhang2017stackgan}\cite{DBLP:journals/corr/abs-1710-10916}. We can see promising results in \cite{reed2016generative} by conditioning the GAN on text descriptions instead of class labels. \cite{zhang2017stackgan} uses a similar approach but breaks the process of generation down into two stage process. Stage-1 produces a low-resolution image based on text description. Stage-2 takes Stage-1 result as input and generates high resolution photo-realistic images. \cite{dash2017tac} additionally conditions its generative process with both text and class information and has produces superior results compared to [scott]. The embeddings to represent text used in the aforementioned papers is Skip-Thought vectors \cite{kiros2015skip}.
+In the recent past there have been attempts on text to image synthesis using conditional GANs such as \cite{reed2016generative}\cite{dash2017tac}\cite{zhang2017stackgan}\cite{DBLP:journals/corr/abs-1710-10916}. We can see promising results in \cite{reed2016generative} by conditioning the GAN on text descriptions instead of class labels. \cite{zhang2017stackgan} uses a similar approach but breaks the process of generation down into two stage process. Stage-1 produces a low-resolution image based on text description. Stage-2 takes Stage-1 result as input and generates high resolution photo-realistic images. \cite{dash2017tac} additionally conditions its generative process with both text and class information and has produced superior results compared to \cite{reed2016generative}. The embeddings to represent text used in the aforementioned papers is Skip-Thought vectors \cite{kiros2015skip}.
 \\
 
 Cycle consistent GANs have showed excellent results for multimodal learning problems, which lack a direct one-to-one correspondence with input and output and allows the network to learn many mappings at the same time as shown in \cite{zhu2017unpaired}\cite{liu2017unsupervised}\cite{zhou2016learning}. But to the best of our knowledge, it still hasn't been used for text-to-image generation, which is a similar multimodal learning problem.
 \\
 \section{Project plan}
-
+\begin{itemize}
+	\item An MVP would use only unpaired data (texts and images) for training.
+	\item An MVP would demonstrate the feasibility of using cycle consistency for text to image translation.
+	\item An MVP would show image captioning capability with cycle consistency.
+\end{itemize}
+	As a rough plan, our first milestone is to get a text-to-image synthesis GAN network working.\\
+	\\
+	As the second milestone (March 12th), we are planning to put everything together and create the first bare bone cycle consistent text-to-image GAN. We should be able to train the GAN and generate results at least as good as \cite{reed2016generative} since it is the first published work of its kind. Some dataset we are planning to test on are (1) Caltech-UCSD Birds (2) VGG Flower Dataset (3) LSUN (large-scale scene understanding challenge) (4) MS COCO dataset.\\
+	\\
+	For the remaining time, we are planning to choose a few of the nice-to-haves that are listed in the following section. This will allow us to further explore this topic and possibly come up with innovative results.\\
+	\\
+	For experiments, we will use the popular inception score and qualitative judgments.
 \section{Nice-to-haves}
+\begin{itemize}
 
+	\item The first addition is to use multi-stage coarse-to-fine image generation similar to StackGAN and StackGAN++ \cite{zhang2017stackgan}\cite{DBLP:journals/corr/abs-1710-10916}. Their work has demonstrated the possibility of generating high resolution, photo-realistic images. By integrating their work, we want to show the scalability of our cycle consistent text-to-image GAN.
+	\item The second natural extension would be to explore other consistency or model structure that we can use for possibly better text-to-image results or involving more tasks in the mix. \cite{DBLP:journals/corr/ZhouKAHE16} were able to use a slightly different cycle consistent structure that can generate CAD models from images. We want to explore the possibility of using more tasks in the middle. For example,  real image $\to$ instance segmentation $\to$ caption $\to$ instance segmentation $\to$ real image. This would allow us to further explore and understand deeper on this topic.
+	\item The third possible addition is to use a similar network to CycleGAN - UNIT (unsupervised image-to-image translation networks) \cite{liu2017unsupervised}. They use VAE to project images in latent space but also forces cycle consistency at the same time. We believe by exploring this topic, we will be able to understand what are the shared features of images and texts in the latent space. Maybe we can also reuse the shared latent space for multi-task learning.
+	\item The fourth topic we choose is data visualization using t-SNE for our generated images. Similar to what StackGAN++ did, we want to show that the generated images are indeed multimodal and there is no mode collapse in our generated images.
+	\item The last topic that we are really excited about is style transfer. The text-to-image generation process usually involves sampling a noise vector z at the beginning of the entire process. \cite{reed2016generative} have shown that the vector z actually encodes the “style” of the generated image. It encodes features that are not present in the conditional text. We want to explore more on this topic. Similar to generative visual manipulation on natural language manifold \cite{zhu2016generative}, we want to let users manipulate latent vectors and generate images that they like.
+	
+	
+	
+\end{itemize}
 \bibliographystyle{plain}
 \bibliography{ref}
 
